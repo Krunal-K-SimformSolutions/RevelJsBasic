@@ -14,23 +14,32 @@
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 		<script>
 			var counter= 0;
+			var slideList= [
+				"<section><li>Static Item 0</li></section>",
+				"<section><li>Static Item 1</li></section>",
+				"<section><li>Static Item 2</li></section>"
+			]
 			
 			function addelement() {
 				var completelist= document.getElementById("time");
 			
-				completelist.innerHTML += "<section><li>Item " + counter + "</li></section>";
+				slideList.push("<section><li>Dynamic Item " + counter + "</li></section>");
+				completelist.innerHTML = slideList.join("");
 				counter++;
-				document.getElementById("btn").innerHTML = "Add Item " + counter;
+				document.getElementById("btn").innerHTML = "Add Item " + (slideList.length + 1);
 				Reveal.slide()
 			}
 			</script>
 	</head>
 	<body>
 		<div class="reveal">
-			<div id="time" class="slides">
+			<div class="slides">
 				<section>
+					<p>Normal Item</p>
 					<button id="btn" onclick="addelement();">Add Item</button>
 				</section>
+			</div>
+			<div id="time" class="slides">
 			</div>
 		</div>
 
