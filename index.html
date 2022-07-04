@@ -13,22 +13,23 @@
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 		<script>
-			var counter= 4;
+			var counter= 0;
 			
 			function addelement() {
-			var completelist= document.getElementById("thelist");
+				var completelist= document.getElementById("time");
 			
-			completelist.innerHTML += "<li>Item " + counter + "</li>";
-			counter++;
+				completelist.innerHTML += "<section><li>Item " + counter + "</li></section>";
+				counter++;
+				document.getElementById("btn").innerHTML = "Add Item " + counter;
+				Reveal.slide()
 			}
 			</script>
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div id="time" class="slides">
 				<section>
-					<button onclick="addelement();">Add Item</button>
-					<div id="thelist"></div>
+					<button id="btn" onclick="addelement();">Add Item</button>
 				</section>
 			</div>
 		</div>
@@ -43,6 +44,8 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+				slideNumber: 'c/t',
+				showSlideNumber: 'all',
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
